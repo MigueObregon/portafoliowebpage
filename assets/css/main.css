@@ -711,7 +711,7 @@ small, .subtitle {
   /* Asegura que los enlaces no queden bloqueados por !important */
   .navmenu ul li a {
     transition: transform 0.2s ease-in-out;
-    background-color: rgba(255, 1, 1, 0.406);/*/////////////////////////*/
+    background-color: rgba(78, 78, 78, 0.406);/*/////////////////////////*/
   }
 
   /* Estado activo (click) sin retraerse */
