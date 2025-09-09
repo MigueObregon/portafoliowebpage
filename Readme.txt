@@ -1,9 +1,10 @@
 Portfolio Project - Migue Obregon
 
 Description:
-This portfolio showcases my work as a web designer and developer. 
-It demonstrates my skills in HTML, CSS, JavaScript, and modern design principles 
-including dark mode, Apple-inspired aesthetics, and responsive layouts.
+This portfolio showcases my work as a graphic designer. 
+It highlights my skills in visual storytelling, typography, color theory, 
+branding, and modern design aesthetics, including dark mode and Apple-inspired minimalism.
+
 
 Project Structure:
 - index.html      -> Main landing page
