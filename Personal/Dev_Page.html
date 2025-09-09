@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>En desarrollo</title>
+  <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+      body {
+          background: #000;
+          color: white;
+          font-family: Arial, sans-serif;
+          display: flex;
+          flex-direction: column;  /* apilar elementos en columna */
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          overflow: hidden;
+      }
+
+      .container {
+          font-size: 3rem;
+          font-weight: bold;
+          text-align: center;
+          user-select: none;
+          white-space: nowrap;
+          position: relative; /* para que la lupa se posicione respecto a este */
+      }
+
+      /* Magnifying Glass Effect */
+      .magnifier {
+          position: absolute;
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          border: 2px solid rgba(255, 255, 255, 0.4);
+          box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+          overflow: hidden;
+          transform: translate(-50%, -50%);
+          pointer-events: none;
+          background: black;
+      }
+
+      .magnifier span {
+          position: absolute;
+          font-size: 5rem; /* Increase size inside magnifier */
+          font-weight: bold;
+          white-space: nowrap;
+          color: white;
+      }
+      
+
+.warning {
+  position: relative; /* relativo para manejar las capas */
+  margin-top: 75px;
+  padding: 0px 15px;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  color: white !important;
+  background: none;
+  cursor: pointer;
+  z-index: 10;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 47px;
+  margin-bottom: 25px;
+}
+
+
+
+
+.back-button .label{
+color: white !important;
+font-size: 17px;
+font-weight: 600;
+;
+}
+
+     .back-button {
+  position: relative; /* relativo para manejar las capas */
+  margin-top: 75px;
+  padding: 0px 15px;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  color: white !important;
+  background: none;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 9999px;
+  border: none;
+  box-shadow: inset 2px 2px 0px -2px rgba(255, 255, 255, 0.7),
+              inset 0 0 3px 1px rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  /* Transiciones suaves */
+  transition: transform 0.3s ease-in-out, opacity 0.5s ease-in-out; 
+  transform: scale(1.1);
+}
+
+/* Capa ::before */
+.back-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 9999px;
+  background-color: rgba(0, 0, 0, 0.03);
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Capa ::after con filtro glass */
+.back-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 9999px;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  -webkit-filter: url(#glass-distortion);
+          filter: url(#glass-distortion);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Hover */
+.back-button:hover {
+  transform: scale(1.4);
+  opacity: 0.9;
+  transition: transform 0.3s ease-in-out, opacity 2.5s ease-in-out;
+}
+
+/* Active */
+.back-button:active {
+  transform: scale(1.1); 
+  transition: transform 0.2s ease-in-out;
+}
+
+
+/* Hover: ligero zoom */
+.label:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+/* Active: efecto de pulsación */
+.label:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+      .label:hover {
+          color: #555; 
+      }
+
+      .label:active {
+          background: linear-gradient(to bottom, #e6e6e6 0%, #efefef 60%, #e1dfe2 100%);
+          box-shadow: 0 0 1px #cfcfcf, inset 0 1px 2px rgba(0,0,0,0.1), 0 1px 0 rgba(255,255,255,0.7);
+      }
+
+      .back-button {
+  pointer-events: auto; /* botón sigue funcionando */
+  z-index: 10;          /* encima de la lupa */
+}
+
+
+
+.magnifier {
+  pointer-events: none; /* lupa nunca bloquea clics ni hovers */
+}
+
+
+
+.label {
+  position: relative;
+  z-index: 2;
+}
+
+  </style>
+</head>
+
+<body class="index-page">
+
+
+
+
+<div class="warning">
+  ⚠
+</div>
+
+  <div class="container" id="textContainer">
+    Sitio en desarrollo. Gracias por su comprensión.
+    <div class="magnifier"><span id="magnifiedText">Sitio en desarrollo. Gracias por su comprensión.</span></div>
+  </div>
+
+  <div class="back-button">
+    
+    <a href="index.html" class="label">Volver</a>
+  </div>
+
+  <script>
+    const magnifier = document.querySelector('.magnifier');
+    const magnifiedText = document.querySelector('#magnifiedText');
+    const textContainer = document.querySelector('#textContainer');
+
+    document.addEventListener('mousemove', (e) => {
+      const rect = textContainer.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Move magnifier
+      magnifier.style.left = `${x}px`;
+      magnifier.style.top = `${y}px`;
+
+      // Adjust the magnified text to match the cursor movement
+      magnifiedText.style.left = `${-x * 1.8 + 60}px`;  // Adjust for scaling effect
+      magnifiedText.style.top = `${-y * 2 + 60}px`;
+    });
+  </script>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <defs>
+    <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.011 0.011" numOctaves="2" seed="92" result="noise" />
+      <feGaussianBlur in="noise" stdDeviation="2" result="blurred" />
+      <feDisplacementMap in="SourceGraphic" in2="blurred" scale="77" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+</svg>
+</body>
+</html>

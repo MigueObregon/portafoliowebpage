@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lupa con scale limpia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 50px;
+    }
+
+    #magnifier {
+      position: fixed;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden; /* 👈 muestra solo lo dentro */
+      border: 2px solid rgba(0,0,0,0.5);
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      background: white; /* 👈 evita mezcla con fondo */
+    }
+
+    #magnifiedContent {
+      transform-origin: top left;
+      position: absolute; /* 👈 se mueve relativo a la lupa */
+      top: 0;
+      left: 0;
+    }
+
+    /* Contenido de prueba */
+    .box {
+      width: 200px;
+      height: 200px;
+      margin: 20px;
+      display: inline-block;
+    }
+    .red { background: red; }
+    .blue { background: blue; }
+    .green { background: green; }
+  </style>
+</head>
+<body>
+  <h1>Ejemplo de lupa con scale</h1>
+  <p>Mueve el cursor sobre el texto o cuadros. Se verá ampliado justo debajo del puntero.</p>
+
+  <div class="box red"></div>
+  <div class="box blue"></div>
+  <div class="box green"></div>
+
+  <!-- Lupa -->
+  <div id="magnifier">
+    <div id="magnifiedContent"></div>
+  </div>
+
+  <script>
+    const magnifier = document.getElementById("magnifier");
+    const magnifiedContent = document.getElementById("magnifiedContent");
+    const zoom = 2;
+
+    // Clonamos solo el contenido visible, no el <body> completo
+    const clone = document.body.cloneNode(true);
+    clone.style.margin = "0";
+    magnifiedContent.appendChild(clone);
+
+    document.addEventListener("mousemove", e => {
+      const { clientX: x, clientY: y } = e;
+
+      // mover la lupa
+      magnifier.style.left = `${x}px`;
+      magnifier.style.top = `${y}px`;
+
+      // aplicar zoom al clon
+      magnifiedContent.style.transform = `scale(${zoom})`;
+
+      // compensar para que el cursor quede centrado en la lupa
+      magnifiedContent.style.left = `${-x * (zoom) + magnifier.offsetWidth / 2}px`;
+      magnifiedContent.style.top = `${-y * (zoom) + magnifier.offsetHeight / 2}px`;
+    });
+  </script>
+</body>
+</html>
