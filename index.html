@@ -161,6 +161,9 @@
     <div class="container">
       <h3 class="sitename">Ideas que impactan. Diseños que conectan</h3>
       <p>Enfoque creativo y estratégico</p>
+
+
+
       <div class="social-links d-flex justify-content-center">
         <a href=""><i class="bi bi-twitter-x"></i></a>
         <a href=""><i class="bi bi-facebook"></i></a>
@@ -168,6 +171,12 @@
         <a href=""><i class="bi bi-skype"></i></a>
         <a href=""><i class="bi bi-linkedin"></i></a>
       </div>
+
+          <div class="containercounter">
+              <h1></h1>
+              <p id="visit-count">Loading visit count...</p>
+          </div>
+
       <div class="container">
         <div class="copyright">
           <span>Copyright</span> <strong class="px-1 sitename">MigueObregon</strong> <span>All Rights Reserved</span>
@@ -178,12 +187,32 @@
           <!-- Licensing information: https://bootstrapmade.com/license/ -->
           <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
         Original template by BootstrapMade | Redesigned & optimized by MigueObregon
-             <div class="containercounter">
-        <h1>Welcome to My Page</h1>
-        <p id="visit-count">Loading visit count...</p>
-    </div>
+
     
-    <script src="script.js"></script>
+                    <script>
+                if (typeof(Storage) !== "undefined") {
+                    // Get the current visit count from localStorage
+                    let visitCount = localStorage.getItem("visitCount");
+
+                    // If no count exists, initialize to 1, otherwise increment
+                    if (visitCount === null) {
+                        visitCount = 1;
+                    } else {
+                        visitCount = parseInt(visitCount) + 1;
+                    }
+
+                    // Store the updated count
+                    localStorage.setItem("visitCount", visitCount);
+
+                    // Display the visit count
+                    document.addEventListener("DOMContentLoaded", function() {
+                        document.getElementById("visit-count").innerText = `Welcome back! You’ve been here ${visitCount} times already.`;
+                    });
+                } else {
+                    console.warn("Local Storage is not supported in this browser.");
+                }
+                    </script>
+
         </div>
       </div>
     </div>
