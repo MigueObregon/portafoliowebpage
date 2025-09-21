@@ -256,8 +256,8 @@ small, .subtitle {
 
 
   .header .logo img {
-    display: block;   /* asegúrate de mostrar solo el favicon */
-    max-height: 32px; /* tamaño controlado */
+    display: block;   
+    max-height: 32px; 
     margin-right: 8px;
   }
 
@@ -268,13 +268,13 @@ small, .subtitle {
 
 
 @media (max-width: 1400px) {
-  /* Oculta solo el texto dentro del h1 */
+
   .sitename span {
     display: none;
   }
 
 .header .logo {
-  /* Aquí ya seleccionas exactamente esa imagen */
+ 
     z-index: 0;
     height: 50px;
     width: 50px;
@@ -283,16 +283,16 @@ small, .subtitle {
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin: 0; /* //////////////////////////////////////////////////////////////////////////////////////////////////////// */
+    margin: 0; 
 }  
 
 .header .logo .sitename img {
-  /* Aquí ya seleccionas exactamente esa imagen */
+
     max-height: 32px;
     max-width: 32px;
     padding-bottom: 5px;
     margin: 0;
-    object-fit: cover;       /* asegura que la imagen llene el círculo sin deformarse */
+    object-fit: cover; 
 }
 
 
@@ -1100,19 +1100,39 @@ section,
   .hero .hero-image img.img3 {
     display:block;
     width: 40%;
+ 
   }
   }
 
-   @media (max-width: 1199px) {
-  .hero .hero-image img.img3
-  {
-    display:block;
-    width: 35%;
-    top: -20%;
-    left: 20%;
-    object-fit: contain;
-    transition: transform 0.4s ease;
-  }
+@media (max-width: 1199px) {
+
+.hero .hero-image {
+  position: relative;   /* necesario para que la imagen absoluta se ubique dentro */
+  height: 200px;        /* dale altura al contenedor (ajusta según tu diseño) */
+}
+.hero .hero-image img.img3 {
+  position: absolute;
+  top: 60%;             /* mueve la imagen hacia abajo (ajusta %) */
+  left: 20%;            /* mueve la imagen hacia la derecha/izquierda */
+  transform: translate(-50%, -50%); 
+  width: 12%;
+  max-width: 80px;
+  height: auto;
+  object-fit: contain;
+  z-index: 5;
+
+}
+
+  
+  .hero-text {
+    padding: 25px;
+    }
+
+  #hero img {
+      object-fit:cover;
+    }
+
+  
   }
 
 
