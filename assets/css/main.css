@@ -1590,8 +1590,50 @@ section,
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
+
+
+.parent {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  align-items: center;
+  max-width: 1200px;  /* o el mismo ancho que tu .container */
+  margin: 0 auto;     /* centra el contenido */
+  padding: 0 15px;    /* deja un poco de respiro en los lados */
+}
+
+.col-lg-4 {
+  min-width: 280px;   /* ancho mínimo decente */
+  max-width: 400px;   /* evita que sea demasiado grande */
+}
+
+
+
+.col-lg-4 img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.content {
+  text-align: left;
+}
+
+.content h2 {
+  margin-bottom: 16px;
+  font-size: 1.8rem;
+}
+
+.about-p {
+  margin-bottom: 16px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+
+
 .about .col-lg-4 {
-  display: flex;
+  display:flex !important;
   justify-content: center;  /* centro horizontal */
   align-items: center;      /* centro vertical */
 }
@@ -2556,11 +2598,13 @@ body {
   font-weight: 250 !important;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  color: #111;
   margin: 0 auto 1em auto;
   max-width: 100ch; 
   text-align: center; 
 }
+
+
+
 
 
 /*Botones*/
