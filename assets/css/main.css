@@ -1608,12 +1608,14 @@ section,
 }
 
 
-
 .col-lg-4 img {
   width: 100%;
+  height: auto;       /* conserva proporciones */
   border-radius: 12px;
   object-fit: cover;
 }
+
+
 
 .content {
   text-align: left;
