@@ -1593,26 +1593,26 @@ section,
 
 
 .parent {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 20px;
-  align-items: center;
-  max-width: 1200px;  /* o el mismo ancho que tu .container */
-  margin: 0 auto;     /* centra el contenido */
-  padding: 0 15px;    /* deja un poco de respiro en los lados */
+  display: grid !important;
+  grid-template-columns: 1fr 2fr !important;
+  gap: 20px !important;
+  align-items: center !important;
+  max-width: 1200px !important;  /* o el mismo ancho que tu .container */
+  margin: 0 auto !important;     /* centra el contenido */
+  padding: 0 15px !important;    /* deja un poco de respiro en los lados */
 }
 
 .col-lg-4 {
-  min-width: 280px;   /* ancho mínimo decente */
-  max-width: 400px;   /* evita que sea demasiado grande */
+  min-width: 280px !important;   /* ancho mínimo decente */
+  max-width: 400px !important;   /* evita que sea demasiado grande */
 }
 
 
 .col-lg-4 img {
-  width: 100%;
-  height: auto;       /* conserva proporciones */
-  border-radius: 12px;
-  object-fit: cover;
+  width: 100% !important;
+  height: auto !important;       /* conserva proporciones */
+  border-radius: 12px !important;
+  object-fit: cover !important;
 }
 
 
