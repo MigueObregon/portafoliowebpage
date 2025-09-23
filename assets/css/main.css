@@ -1340,41 +1340,82 @@ section,
   z-index: 3;
 }
 
-.hero h2 {
-  margin: 0;
-  font-size: clamp(1.5rem, 3vw + 0.5rem, 3rem);
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #f5f5f5;
-  font-family: --system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, #111 0%, #1c1c1c 100%);
+  color: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+
+.hero h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: clamp(2rem, 5vw + 1rem, 3rem);
+  font-weight: 700;
+  color: #f5f5f5;
+  animation: floatText 6s ease-in-out infinite;
 }
 
 #herotextsubtitleh2 {
-  width: 51%;
-  margin-bottom: 30px;
+  width: 100%;
+  max-width: 600px;
   padding: 5px 2px;
-  font-size: clamp(1rem, 1.5vw + 0.5rem, 2rem);
-  font-weight: 600;
+  padding-bottom: 20px; 
+  font-size: clamp(1.25rem, 2.5vw + 0.5rem, 2rem);
+  font-weight: 500;
   font-style: italic;
-  font-family: --system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  
+  text-align: left;
+  color: #e0e0e0;
+  animation: floatText 8s ease-in-out infinite alternate;
 }
 
 #hiper-p-text {
-  font-size: clamp(1rem, 1.5vw + 0.5rem, 1.8rem);
-  color: #f5f5f5;
+  font-size: clamp(1rem, 1.5vw + 0.5rem, 1.7rem);
   font-weight: 300;
-  margin-top: 0;
-  font-family: --system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0 0 2rem 0;
+  color: #f5f5f5;
+  animation: floatText 10s ease-in-out infinite alternate-reverse;
 }
 
 .hero p span {
   letter-spacing: 1px;
-  border-bottom: 2px solid navy;
-  font-family: --system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-
+  border-bottom: 2px solid #0071e3;
 }
+
+@keyframes floatText {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@media (min-width: 768px) {
+  .hero {
+    text-align: left;
+    padding: 0 4rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* From Uiverse.io by alexmaracinaru */ 
 .button {
@@ -1588,42 +1629,93 @@ section,
 }
 
 /*--------------------------------------------------------------
-# About Section
+# About Section & Info Cards - Responsive Dark Mode
 --------------------------------------------------------------*/
 
+/* Contenedor de las tarjetas */
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: transparent; /* Dark mode */
+}
 
+/* Tarjetas */
+.info-cards .card {
+  background: #1c1c1e; 
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  padding: 28px 24px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.info-cards .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.info-cards .icon {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+  color: #0a84ff; 
+}
+
+.info-cards h3 {
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.3rem);
+  margin-bottom: 10px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.info-cards p {
+  font-size: clamp(0.9rem, 0.85rem + 0.3vw, 1rem);
+  line-height: 1.5;
+  color: #d1d1d6;
+}
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
 .parent {
-  display: grid !important;
-  grid-template-columns: 1fr 2fr !important;
-  gap: 20px !important;
-  align-items: center !important;
-  max-width: 1200px !important;  /* o el mismo ancho que tu .container */
-  margin: 0 auto !important;     /* centra el contenido */
-  padding: 0 15px !important;    /* deja un poco de respiro en los lados */
+  display: grid;
+  grid-template-columns: auto 1fr; 
+  gap: 20px;
+  align-items: center; 
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.col-lg-4 {
-  min-width: 280px !important;   /* ancho mínimo decente */
-  max-width: 400px !important;   /* evita que sea demasiado grande */
+.col-lg-4 {  
+  min-width: 280px;   
+  max-width: 400px;   
 }
-
 
 .col-lg-4 img {
-  width: 100% !important;
-  height: auto !important;       /* conserva proporciones */
-  border-radius: 12px !important;
-  object-fit: cover !important;
+  width: 100%;
+  height: auto;       
+  border-radius: 12px;
+  object-fit: cover;  
 }
 
-
+.col-lg-8 {
+  min-width: 0; 
+}
 
 .content {
   text-align: left;
 }
 
 .content h2 {
+  font-weight: 700;
+  font-size: clamp(1.6rem, 1.5rem + 1vw, 2rem);
   margin-bottom: 16px;
-  font-size: 1.8rem;
+  text-align: left !important;
 }
 
 .about-p {
@@ -1632,20 +1724,7 @@ section,
   text-align: justify;
 }
 
-
-
-.about .col-lg-4 {
-  display:flex !important;
-  justify-content: center;  /* centro horizontal */
-  align-items: center;      /* centro vertical */
-}
-
-
-.about .content h2 {
-  font-weight: 700;
-  font-size: 24px;
-}
-
+/* Listas en About */
 .about .content ul {
   list-style: none;
   padding: 0;
@@ -1668,7 +1747,79 @@ section,
   line-height: 0;
 }
 
+/*--------------------------------------------------------------
+# Responsive Media Queries
+--------------------------------------------------------------*/
 
+/* Tablets y pantallas medianas */
+
+@media (min-width: 769px) and (max-width: 991px) {
+
+  .col-lg-4 img {
+    max-width: 50%;
+    height: auto;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .parent {
+    grid-template-columns: 1fr; /* apila imagen y texto */
+    text-align: center;
+  }
+  .col-lg-4, .col-lg-8 {
+    max-width: 100%;
+  }
+  .content {
+    text-align: center;
+  }
+
+
+  .parent {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .content {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .parent {
+    grid-template-columns: 1fr; /* imagen arriba, texto abajo */
+    gap: 16px;
+  }
+  .col-lg-4 {
+    margin: 0 auto;
+  }
+  .content h2 {
+    font-size: clamp(1.4rem, 1.2rem + 2vw, 1.6rem);
+  }
+  .about-p {
+    font-size: clamp(0.85rem, 0.8rem + 1vw, 0.95rem);
+  }
+
+  /* Tarjetas info-cards apiladas */
+  .info-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .parent {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .content {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
 
 
 /*--------------------------------------------------------------
@@ -2581,7 +2732,7 @@ body {
 
   .col-lg-8 p {
   font-family: BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
-  font-size: clamp(0.9rem, 0.65rem + 0.65vw, 1rem);
+  font-size: clamp(0.95rem, 0.85rem + 0.4vw, 1.1rem);
   line-height: 1.6;
   font-weight: 220 !important;
   letter-spacing: -0.01em;
@@ -2595,7 +2746,7 @@ body {
 
 
 .col-lg-8 h1 {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
+  font-family: --system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
   font-size: clamp(1.8rem, 1rem + 3vw, 3rem);
   font-weight: 250 !important;
   line-height: 1.2;
