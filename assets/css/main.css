@@ -605,7 +605,7 @@ small, .subtitle {
 
   /* Capa de cristal solo para activo */
   .navmenu .active::before {
-    background-color: rgba(255, 255, 255, 0.114);
+    background-color: rgba(0, 0, 0, 0.114);
   }
 
   .navmenu .active::after {
@@ -676,21 +676,21 @@ small, .subtitle {
     align-items: center;
     justify-content: space-between;
     white-space: nowrap;
-    transition: transform 0.2s ease-in-out;  /* sí permitimos animación */
+    transition: transform 0.2s ease-in-out; 
   }
 
-    /* Hover sobre enlaces */
+   
   .navmenu a:hover {
-    transform: scale(1); /* zoom suave */
+    transform: scale(1); 
   }
 
- /* Hover sobre li (opcional si quieres agrandar todo el bloque) */
+ 
   .navmenu ul li:hover {
     transform: scale(1.05);
     transition: transform 0.2s ease-in-out;
   }
 
-  /* Estado activo (no retraer al hacer click) */
+ 
   .navmenu .active,
   .navmenu .active a {
     transform: none !important;
@@ -719,27 +719,26 @@ small, .subtitle {
     justify-content: center;
     border-radius: 50%;
     transition: none !important;
-    transform: none !important;
   }
 
   .navmenu ul li:hover {
-    transform: scale(1.02); /* un poco de zoom */
+    transform: scale(1.02); 
     align-items: left;
     align-content: left;
-    transition: transform 0.2s ease-in-out; /* animación suave */
+    transition: transform 0.2s ease-in-out; 
   }
-  /* Asegura que los enlaces no queden bloqueados por !important */
+  
   .navmenu ul li a {
     transition: transform 0.2s ease-in-out;
-    background-color: rgba(78, 78, 78, 0.406);/*/////////////////////////*/
+    background-color: rgba(1, 1, 31, 0.95);/*/////////////////////////*/
   }
 
-  /* Estado activo (click) sin retraerse */
+  
   .navmenu .active,
   .navmenu .active a {
     transform: none !important;
     transition: none !important;
-    background-color: rgba(0, 76, 255, 0.183);
+    background-color: rgba(27, 106, 146, 0.822);
     border: 0;
   }
 
@@ -747,7 +746,7 @@ small, .subtitle {
   .navmenu a:focus i:hover {
     background-color: white;
     color: white;
-    transform: scale(1) !important; /* hover mínimo */
+    transform: scale(1) !important; 
   }
 
   .navmenu a:hover,
@@ -755,7 +754,7 @@ small, .subtitle {
   .navmenu .active:focus {
     color: white;
     transition: none !important;
-    transform: scale(1) !important; /* hover mínimo */
+    transform: scale(1) !important; 
   }
 
   .navmenu .active i,
@@ -773,15 +772,62 @@ small, .subtitle {
     margin: 10px 20px;
     background-color: var(--nav-dropdown-background-color);
     transition: none !important;
+    background-color: rgba(1, 1, 31, 0.95);
   }
 
-  .navmenu .dropdown ul ul {
-    background-color: rgba(7, 131, 255, 0.1);
+
+  .navmenu .dropdown ul a {
+    padding: 10px 24px;
+    margin: 8px 20px;
+    background-color: var(--nav-dropdown-background-color);
+    transition: none !important;
+    background-color: rgba(1, 1, 31, 0.975);
   }
+
+.navmenu .dropdown > ul > li.dropdown > a {
+    padding: 5px 24px;
+    margin-left: 50px;
+    background-color: var(--nav-dropdown-background-color);
+    transition: none !important;
+    background-color: rgba(53, 53, 53, 0.975);
+  }
+
+   .navmenu .dropdown > ul > li.dropdown > a::after {
+    padding: 0px 24px;
+    margin-left: 80px;
+    background-color: var(--nav-dropdown-background-color);
+    transition: none !important;
+    background-color: rgba(0, 0, 0, 0.139);
+  }
+
+  .navmenu .dropdown > ul > li.dropdown > a::before {
+    padding: 0px 24px;
+    margin-left: 80px;
+    background-color: var(--nav-dropdown-background-color);
+    transition: none !important;
+    background-color: rgba(0, 0, 0, 0.139);
+  }
+
+
+.navmenu .dropdown  ul  li.dropdown ul li a {
+    padding: 5px 24px;
+    margin-left: 20px;
+    background-color: var(--nav-dropdown-background-color);
+    transition: none !important;
+    background-color: rgba(34, 34, 34, 0.975);
+  }
+
+
+
+  .navmenu .dropdown ul ul {
+    background-color: rgb(0, 0, 0);
+  }
+
+
 
   .navmenu .dropdown>.dropdown-active {
     display: block;
-    background-color: rgba(33, 37, 41, 0.03);
+    background-color: rgba(179, 179, 179, 0.03);
   }
 
   .mobile-nav-active {
@@ -2485,9 +2531,114 @@ body {
 # Portfolio Section
 --------------------------------------------------------------*/
 
+@media (max-width: 1396px) {
+
+.row.gy-4.isotope-container .isotope-item {
+  padding-left: 50px; 
+  }
+  
+.container .isotope-layout{
+justify-content: center !important;
+align-items: center !important;
+
+}
+
+.isotope-layout {
+  width: 100%;
+}
+
+.isotope-container {
+  display: block;
+  margin: 0 auto;
+}
+
+.isotope-item {
+  flex: 0 0 calc((100% - 2 * 1.5rem) / 2);
+  max-width: calc((100% - 2 * 1.5rem) / 2);
+  margin-bottom: 1.5rem;
+}
+}
+
+
+@media (min-width: 770px) and (max-width: 992px) {
+  
+.container .isotope-layout{
+justify-content: center !important;
+align-items: center !important;
+}
+
+.isotope-layout {
+  width: 100%;
+}
+
+.isotope-container {
+  display: block;
+  margin: 0 auto;
+}
+
+.isotope-item {
+  flex: 0 0 calc((100% - 2 * 1.5rem) / 2);
+  max-width: calc((100% - 2 * 1.5rem) / 2);
+  margin-bottom: 1.5rem;
+}
+
+
+}
+
+
+@media (max-width: 769px) {
+
+  .row.gy-4.isotope-container .isotope-item {
+  padding-left: 50px; 
+  }
+.container .isotope-layout{
+justify-content: center !important;
+align-items: center !important;
+
+}
+
+.isotope-layout {
+  width: 100%;
+}
+
+.isotope-container {
+  display: block;
+  margin: 0 auto;
+}
+
+.isotope-item {
+  flex: 0 0 calc((100% - 2 * 1.5rem) / 2);
+  max-width: calc((100% - 2 * 1.5rem) / 1);
+  margin-bottom: 1.5rem;
+}
+}
+
+
+
+.isotope-container {
+  margin: 0 auto;
+  display: block;
+}
+
+
+
+
+.row.gy-4.isotope-container {
+  display: grid;
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(auto-fit, minmax(260px, clamp(280px, 25%, 320px)));
+  gap: clamp(1rem, 2vw, 2.5rem);
+  justify-content: center;
+  align-items: start;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
 .portfolio-item {
-  max-width: 100%;
-  height: 235px;
+  width: 100%;
+ 
 }
 
 
@@ -2504,11 +2655,10 @@ body {
   padding: 0;
   font-size: 18px;
   font-weight: 500;
-  margin: 0 10px;
+  margin: 0 10px 5px 10px;
   line-height: 1;
-  margin-bottom: 5px;
   transition: background-color 0.2s ease, color 0.2s ease;
-  user-select: none; /* previene delays por selección accidental */
+  user-select: none;
 }
 
 .portfolio .portfolio-filters li:hover,
@@ -2516,40 +2666,30 @@ body {
   color: var(--accent-color);
 }
 
-.portfolio .portfolio-filters li:first-child {
-  margin-left: 0;
-}
-
-.portfolio .portfolio-filters li:last-child {
-  margin-right: 0;
-}
-
-@media (max-width: 575px) {
-  .portfolio .portfolio-filters li {
-    font-size: 14px;
-    margin: 0 5px;
-  }
-}
-
 .portfolio .portfolio-content {
+  width: 100%;
   position: relative;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
   border-radius: 6px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  padding-top: 56.25%;
 }
 
 .portfolio .portfolio-content img {
-  transition: 0.3s;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 235px;
-  display: block;
-  object-fit:cover;
+  height: 100%;
+  object-fit: cover;
   transform: scale(1.1);
-  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  object-position: center;
+    max-width: none;
 }
+
+
 
 
 .portfolio .portfolio-content .portfolio-info {
@@ -2557,86 +2697,57 @@ body {
   position: absolute;
   inset: 0;
   z-index: 3;
-  transition: all ease-in-out 0.3s;
   background: rgba(0, 0, 0, 0.6);
-  padding: 15px;
-  margin-top: auto; /* empuja al fondo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  transition: all ease-in-out 0.3s;
+  padding: 15px;
 }
 
 .portfolio .portfolio-content .portfolio-info h4 {
   font-size: 14px;
   padding: 5px 10px;
   font-weight: 400;
-  color: #ffffff;
+  color: #fff;
   display: inline-block;
   background-color: var(--accent-color);
 }
 
-.portfolio-info p svg {
-  margin-left: 8px; 
-  vertical-align: middle; 
-}
-
 .portfolio .portfolio-content .portfolio-info p {
-  justify-content: center; 
-  align-items: center;    
-  height: 100%;          
   display: flex;
-  text-align: center;
-  margin: 0; 
-  left: 0;
-  right: 0;
+  justify-content: center;
+  align-items: center;
   font-size: 24px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255,255,255,0.8);
+  margin: 0;
+  width: 100%;
 }
-
-
 
 .portfolio .portfolio-content .portfolio-info .preview-link,
 .portfolio .portfolio-content .portfolio-info .details-link {
   position: absolute;
-  left: calc(50% - 40px);
-  font-size: 100px;
-  top: calc(50% - 14px);
-  color: #fff;
-  transition: 0.1s;
-  line-height: 1.2;
-}
-
-.portfolio .portfolio-content .portfolio-info p:hover {
-  color: white;
-}
-
-
-
-.portfolio .portfolio-content .portfolio-info .preview-link:hover,
-.portfolio .portfolio-content .portfolio-info .details-link:hover {
-  color: var(--accent-color);
-}
-
-.portfolio .portfolio-content .portfolio-info .details-link {
   left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   font-size: 34px;
-  line-height: 0;
-}
-
-.portfolio .portfolio-content:hover .portfolio-info {
-  opacity: 1;
+  color: #fff;
+  line-height: 1.2;
+  transition: 0.1s;
 }
 
 .portfolio .portfolio-content:hover img {
   transform: scale(1.3);
 }
 
-
-.row.gy-4.isotope-container {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
+.portfolio .portfolio-content:hover .portfolio-info {
+  opacity: 1;
 }
+
+
+
 
 
 /*--------------------------------------------------------------
