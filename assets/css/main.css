@@ -1449,196 +1449,98 @@ section,
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* From Uiverse.io by alexmaracinaru */ 
-.button {
-  background-color: transparent;
-  border: none;
+/* From Uiverse.io by M4rco592 */ 
+.gradient-button {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin: 50px 0px;
-}
-
-.button svg {
-  width: 0;
-  height: 0;
-}
-
-.button p{
-  width: 150px;
-  height: 60px;
-  z-index: 9;
-  font-size: 20px;
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: bold;
   color: white;
-  text-align: center;
+  background: transparent;
+  border: none;
   cursor: pointer;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  text-shadow: 0 0 10px rgb(34, 143, 147);
-  letter-spacing: 1px;
-  user-select: none;
+  border-radius: 50px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
 }
 
-.button p a{
-  width: 150px;
-  height: 60px;
-  z-index: 9;
-  font-size: 20px;
-  color: white;
-  text-align: center;
-  cursor: pointer;
-  padding: 0;
-  padding-bottom: 15px;     /* opcional, un poco de espacio interno */
-  margin: 0 auto;
-  align-items: flex-start; /* pega al borde superior */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  text-shadow: 0 0 10px rgb(34, 143, 147);
-  letter-spacing: 1px;
-  user-select: none;
+.gradient-button:hover {
+  transform: scale(1.03);
 }
 
-.button p:hover + .liquid span:not(.bg) {
-  animation-play-state: running;
-}
-
-.button p:hover {
-  transform: scale(1.1);
-}
-
-.button:active p {
-  transform: scale(1);
-}
-
-.button .liquid {
-  filter: url(#gooey);
-  width: 150px;
-  height: 200px;
-  position: absolute;
-  inset: 0;
-}
-
-.button .liquid > span {
-  position: absolute;
-  top: 1px;
-  left: -35px;
-  width: 100%;
-  height: 100%;
-  display: block;
-  animation: rotate 2.5s ease infinite;
-  animation-delay: calc(0.15s * var(--i));
-  animation-play-state: paused;
-}
-
-.button .liquid > span > span {
-  animation: move 6s ease-in-out infinite;
-  animation-delay: calc(0.2s * var(--i));
-  background: rgb(26, 49, 162);
-  width: 50px;
-  height: 50px;
-  display: block;
-  margin: auto;
-  border-radius: 50%;
-}
-
-.button .liquid span > span::before {
+.gradient-button::before {
   content: "";
   position: absolute;
-  left: calc(50% - 20px);
-  top: 0;
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(#2702f8, #002a2c);
-  border-radius: 50%;
-  box-shadow: 0 0 30px hsl(0, 0%, 69%);
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+  
+    #4ecdc4,
+    #45b7d1,
+    #96ceb4,
+    #06b0a7,
+    #49489e,
+    #3f026d
+  );
+  z-index: -2;
+  filter: blur(10px);
+  transform: rotate(0deg);
+  transition: transform 1.5s ease-in-out;
 }
 
-.button .liquid span.bg {
-  animation: none;
-}
-.button .liquid span.bg > span::before {
-  width: 150px;
-  height: 50px;
-  left: calc(50% - 40px);
-  border-radius: 20px;
+.gradient-button:hover::before {
+  transform: rotate(180deg);
 }
 
-.button .liquid span:nth-child(2) {
-  left: -20px;
-}
-.button .liquid span:nth-child(1) {
-  left: -40px;
-}
-.button .liquid span:nth-child(3) {
-  left: -50px;
-}
-.button .liquid span:nth-child(4) {
-  left: 20px;
-}
-.button .liquid span:nth-child(7) {
-  left: 40px;
-}
-.button .liquid span:nth-child(6) {
-  left: 50px;
+.gradient-button::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: rgba(33, 152, 173, 0);
+  border-radius: 47px;
+  z-index: -1;
+  filter: blur(5px);
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  80%,
-  100% {
-    transform: rotate(360deg);
-  }
+.gradient-text {
+  color:#ffffff; 
+  background: conic-gradient(
+    from 0deg,
+    
+    #4ecdc4,
+    #45b7d1,
+    #96ceb4,
+    #feca57,
+
+  );
+  background-clip: text;
+  filter: hue-rotate(0deg);
 }
 
-@keyframes move {
-  0%,
-  100% {
-    transform: translateX(0) translateY(0) scale(1);
-  }
-  20% {
-    transform: translateX(-8px) translateY(-4px) scale(1.1);
-  }
-  40% {
-    transform: translateX(8px) translateY(8px) scale(0.9);
-  }
-  60% {
-    transform: translateX(-8px) translateY(4px) scale(1.1);
-  }
-  80% {
-    transform: translateX(5px) translateY(-8px) scale(0.9);
+.gradient-button:hover .gradient-text {
+  animation: hue-rotating 2s linear infinite;
+}
+
+.gradient-button:active {
+  transform: scale(0.99);
+}
+
+@keyframes hue-rotating {
+  to {
+    filter: hue-rotate(360deg);
   }
 }
 
-@media (pointer: coarse), (pointer: none) {
-  .button .liquid > span > span {
-    background: transparent;
-  }
-}
+
+
+
+
+
+
+
 
 
 
